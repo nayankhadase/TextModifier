@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} TextModifire | Result {% endblock title %}
+{% block body %} 
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-7 m-auto">
+                <h4>Your Analyzed Text:</h4>
+                <div class="texts">
+                    <pre>{{result}}</pre>
+                    
+                </div>
+                
+                <div>
+                    {% if length != "off" %}
+                    <p>letter count: {{length}}</p>
+                    {% endif %}
+
+                    {% if wordcount != "off" %}
+                    <p>Word count: {{wordcount}}</p>
+                    {% endif %}
+                    
+                    
+                    <h5>{{error}}</h5>
+                    
+
+                </div>
+
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-4 m-auto">
+                <a class="btn btn-outline-primary  btn-sm btn-block " href="/">Back</a>
+            </div>
+        </div>
+    </div>
+        
+{% endblock body %}

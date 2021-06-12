@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} TextModifire | Home {% endblock title %}
+{% block body %} 
+    <div class="container">
+        <div class="row mt-3 mb-3">
+            <div class="col-lg-8 m-auto">
+                <form action="/analyze" method="POST" id="formsubmit">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="query"><h4 >Enter Your Text :</h4> </label>
+                        <textarea placeholder="Write your Text here..." class="form-control" name="query" id="query" rows="5" required></textarea>
+                        <span id="error" style="color: red;"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 m-auto">
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" name="upper" id="upper">
+                              <label class="custom-control-label" for="upper">
+                                UPPERCASE
+                              </label>
+                            </div>
+                            
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" name="punch" id="punch">
+                              <label class="custom-control-label" for="punch">
+                                Remove Punctuation
+                              </label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" name="lower" id="lower">
+                              <label class="custom-control-label" for="lower">
+                                Lowercase
+                              </label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" name="numbers" id="numbers">
+                              <label class="custom-control-label" for="numbers">
+                                Remove Numbers
+                              </label>
+                            </div>
+                          </div>
+                        <div class="col-md-4 m-auto">
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" name="wordcount" id="wordcount">
+                              <label class="custom-control-label" for="wordcount">
+                                Count Words 
+                              </label>
+                            </div>
+                            
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" name="lettercount" id="lettercount">
+                              <label class="custom-control-label" for="lettercount">
+                                Count Letters
+                              </label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" name="extraspace" id="extraspace">
+                              <label class="custom-control-label" for="extraspace">
+                                Remove Extra Spaces  
+                              </label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                              <input class="custom-control-input" type="checkbox" name="newline" id="newline">
+                              <label class="custom-control-label" for="newline">
+                                Remove New Line
+                              </label>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-md-8 m-auto">
+                        <input type="submit" class="btn btn-success btn-round btn-block mt-4" value="Analyze Text">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function()
+        {
+          $("#formsubmit").submit(
+            function()
+            {
+              var query=$("#query").val();
+              if (query == "")
+              {
+                $("#error").text("Enter Your text first");
+                $("#error").css("display","block");
+                return false;
+              }
+              else
+              {
+                return true;
+              }
+            }
+          )
+          $("#query").focus(function()
+          {
+            $("#error").css("display","none");
+          })
+        })
+    </script>
+
+{% endblock body %}

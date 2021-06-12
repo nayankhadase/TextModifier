@@ -1,0 +1,22 @@
+.texts {
+    font-size: 18px;
+    color: #2fe1e1;
+    padding: 5px 10px;
+    border-radius: 7px;
+    border: 1px solid green;
+    margin-bottom: 20px;
+    background-color: #fff;
+    min-height: 20vh;
+    max-height: 300px;
+    overflow: auto;
+    
+}
+.texts>pre{
+    font-family: 'Times New Roman', Times, serif;
+}
+body
+{
+background-image: linear-gradient(#77adff,white);
+min-height: 100vh;
+font-family: 'Times New Roman', Times, serif;
+}
